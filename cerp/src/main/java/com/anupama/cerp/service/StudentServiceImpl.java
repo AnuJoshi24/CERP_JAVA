@@ -6,8 +6,12 @@ import com.anupama.cerp.entities.Course;
 import com.anupama.cerp.entities.Student;
 import com.anupama.cerp.repository.CourseRepository;
 import com.anupama.cerp.repository.StudentRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+@Transactional
 public class StudentServiceImpl implements StudentService{
 
     @Autowired

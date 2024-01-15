@@ -38,7 +38,7 @@ public class ScheduleController {
        return ResponseEntity.ok("Schedule edited successfully");
     }
 
-    @DeleteMapping("/{courseName)")
+    @DeleteMapping("/{courseName}")
     public ApiResponse deleteSchedule(@Valid @RequestBody ScheduleDto scheduleDto){
         return new ApiResponse(scheduleService.deleteSchedule(scheduleDto.getId()));
 

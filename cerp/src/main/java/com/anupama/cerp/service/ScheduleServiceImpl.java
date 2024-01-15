@@ -7,10 +7,14 @@ import com.anupama.cerp.entities.Subject;
 import com.anupama.cerp.repository.CourseRepository;
 import com.anupama.cerp.repository.ScheduleRepository;
 import com.anupama.cerp.repository.SubjectRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class ScheduleServiceImpl implements ScheduleService{
     @Autowired
     private CourseRepository courseRepository;
