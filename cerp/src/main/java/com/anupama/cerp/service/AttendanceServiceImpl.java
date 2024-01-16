@@ -12,6 +12,7 @@ import com.anupama.cerp.repository.StudentRepository;
 import com.anupama.cerp.repository.SubjectRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,8 +52,10 @@ public class AttendanceServiceImpl implements AttendanceService{
         }
     }
 
+    @Cacheable(cacheNames = "attendance" , key = "#subjectName")
     @Override
     public List<AttendanceList> showAttendance(String subjectName) {
+        System.out.println("Calling attendance db : ");
         return attendanceRepository.findAllBySubjectNameAndSortedById(subjectName);
     }
 

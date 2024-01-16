@@ -8,6 +8,7 @@ import com.anupama.cerp.repository.CourseRepository;
 import com.anupama.cerp.repository.StudentRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -43,6 +44,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public Student getStudentDetails(Long studentId) {
+        System.out.println("Calling external student db");
         return studentRepository.findById(studentId)
                 .orElseThrow(()-> new EntityNotFoundException("Student not found with id:"+studentId));
     }

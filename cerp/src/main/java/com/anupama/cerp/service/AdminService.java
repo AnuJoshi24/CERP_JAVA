@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface AdminService {
     Admin authenticateAdmin(String email , String password);
-    List<Course> getCourseList();
+    List<Course> getCourseList() throws InterruptedException;
     List<Subject> getSubjectList(String courseName);
 }

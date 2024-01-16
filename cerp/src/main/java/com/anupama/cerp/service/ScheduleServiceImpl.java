@@ -9,6 +9,9 @@ import com.anupama.cerp.repository.ScheduleRepository;
 import com.anupama.cerp.repository.SubjectRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,11 +40,14 @@ public class ScheduleServiceImpl implements ScheduleService{
         return scheduleRepository.save(schedule);
     }
 
+    @Cacheable(cacheNames = "schedules" , key = "#courseName")
     @Override
     public List<com.anupama.cerp.projection.ScheduleProjection> getSchedule(String courseName) {
+        System.out.println("Calling schedule db : ");
         return scheduleRepository.findFullScheduleByCourse(courseName);
     }
 
+    @CachePut(cacheNames = "schedules" , key = "#courseName")
     @Override
     public void editSchedule(ScheduleDto scheduleDto, String courseName) {
      Subject subject = subjectRepository.findBySubjectName(scheduleDto.getSubjectName());
@@ -64,6 +70,7 @@ public class ScheduleServiceImpl implements ScheduleService{
      editedSchedule.setCourse(course);
     }
 
+    @CacheEvict(cacheNames = "schedules" , key = "#courseName")
     @Override
     public String deleteSchedule(Long id) {
         if(scheduleRepository.existsById(id)){

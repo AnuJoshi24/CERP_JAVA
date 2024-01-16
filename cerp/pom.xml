@@ -40,9 +40,20 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
+<!--		cache -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+
+
+<!--		MySQL    -->
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
+			<version>8.2.0</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>

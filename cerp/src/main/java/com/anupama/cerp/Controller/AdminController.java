@@ -33,7 +33,8 @@ public class AdminController {
 
 
     @GetMapping("/courses")
-    public ResponseEntity<?> getCourseList(){
+    public ResponseEntity<?> getCourseList() throws InterruptedException {
+        System.out.println("Calling course external db:");
         return ResponseEntity.ok(adminService.getCourseList());
     }
 
