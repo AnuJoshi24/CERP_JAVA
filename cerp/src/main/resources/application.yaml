@@ -23,6 +23,8 @@ spring:
       use-key-prefix: true
       key-prefix: cerp
       time-to-live: 60000
+      template.defaultSerializer: org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer
+
 
 logging :
 level :
