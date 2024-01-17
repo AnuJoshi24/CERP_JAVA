@@ -1,8 +1,9 @@
 package com.anupama.cerp.projection;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class ScheduleProjection {
+public class ScheduleProjection implements Serializable {
 
     private long scheduleId;
     private LocalDateTime startTime;

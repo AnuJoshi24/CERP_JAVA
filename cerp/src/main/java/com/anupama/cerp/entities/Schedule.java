@@ -1,7 +1,6 @@
 package com.anupama.cerp.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.ser.Serializers;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -10,7 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Entity
-public class Schedule extends BaseEntity{
+public class Schedule extends BaseEntity {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 

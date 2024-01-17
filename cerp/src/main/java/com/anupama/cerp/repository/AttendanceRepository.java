@@ -1,10 +1,10 @@
 package com.anupama.cerp.repository;
 
-import com.anupama.cerp.projection.AttendanceList;
-import com.anupama.cerp.projection.AttendanceRecord;
 import com.anupama.cerp.entities.Attendance;
 import com.anupama.cerp.entities.Student;
 import com.anupama.cerp.entities.Subject;
+import com.anupama.cerp.projection.AttendanceList;
+import com.anupama.cerp.projection.AttendanceRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

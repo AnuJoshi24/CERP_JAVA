@@ -2,13 +2,13 @@ package com.anupama.cerp.Controller;
 
 
 import com.anupama.cerp.Dto.AdminDto;
+import com.anupama.cerp.entities.Admin;
 import com.anupama.cerp.entities.Subject;
 import com.anupama.cerp.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.anupama.cerp.entities.Admin;
 
 import java.util.List;
 

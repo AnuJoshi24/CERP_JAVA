@@ -1,16 +1,6 @@
 package com.anupama.cerp;
 
-import com.anupama.cerp.entities.*;
-import com.anupama.cerp.repository.*;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 @SpringBootTest
 class CerpApplicationTests {

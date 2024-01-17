@@ -3,7 +3,6 @@ package com.anupama.cerp.service;
 import com.anupama.cerp.Dto.ScheduleDto;
 import com.anupama.cerp.entities.Schedule;
 
-
 import java.util.List;
 
 public interface ScheduleService {

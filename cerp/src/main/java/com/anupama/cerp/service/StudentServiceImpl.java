@@ -43,6 +43,7 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
+    @Cacheable(cacheNames = "student-getStudentDetails", key = "#studentId")
     public Student getStudentDetails(Long studentId) {
         System.out.println("Calling external student db");
         return studentRepository.findById(studentId)
