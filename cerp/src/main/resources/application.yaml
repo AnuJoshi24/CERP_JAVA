@@ -13,6 +13,10 @@ spring:
     open-in-view: false
     hibernate:
       ddl-auto: update
+#  security:
+#    user:
+#      name: anupama
+#      password: anupama
 #  redis:
 #    host: localhost
 #    port: 6379

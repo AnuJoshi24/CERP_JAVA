@@ -8,6 +8,7 @@ import com.anupama.cerp.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class FeedbackController {
     private FeedbackService feedbackService;
 
     @PostMapping("/{studentId}/{subjectName}")
+    @PreAuthorize("hasAuthority('STUDENT')")
     public ResponseEntity<?> addFeedback(@PathVariable Long studentId , @PathVariable String subjectName , @RequestBody FeedbackDto feedbackDto){
         Feedback feedback = feedbackService.addFeedback(feedbackDto,studentId,subjectName);
         if(feedback!=null){
@@ -31,6 +33,7 @@ public class FeedbackController {
     }
 
     @GetMapping("/{subjectName}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> showFeedback(@PathVariable String subjectName){
         List<FeedbackList> list = feedbackService.showFeedback(subjectName);
         if(list!=null){

@@ -10,33 +10,34 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 
 @SpringBootApplication
 @EnableCaching // to enable caching
+@EnableWebSecurity
 public class CerpApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CerpApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CerpApplication.class, args);
+    }
 
-	@Bean
-	public ModelMapper mapper() {
-		ModelMapper modelMapper = new ModelMapper();
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-		return modelMapper;
-	}
+    @Bean
+    public ModelMapper mapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        return modelMapper;
+    }
 
-	@Bean
-	public RedisTemplate<Object, Object> sessionRedisTemplate(
-			RedisConnectionFactory connectionFactory) {
-		RedisTemplate<Object, Object> template = new RedisTemplate<Object, Object>();
-		template.setKeySerializer(new StringRedisSerializer());
-		template.setHashKeySerializer(new StringRedisSerializer());
+    @Bean
+    public RedisTemplate<Object, Object> sessionRedisTemplate(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<Object, Object> template = new RedisTemplate<Object, Object>();
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setHashKeySerializer(new StringRedisSerializer());
 
-		template.setDefaultSerializer(new GenericJackson2JsonRedisSerializer());
+        template.setDefaultSerializer(new GenericJackson2JsonRedisSerializer());
 
-		template.setConnectionFactory(connectionFactory);
-		return template;
-	}
+        template.setConnectionFactory(connectionFactory);
+        return template;
+    }
 }

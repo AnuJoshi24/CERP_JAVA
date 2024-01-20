@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class AttendanceController {
 
 
     @GetMapping("/{studentId}")
+    @PreAuthorize("hasAuthority('STUDENT')")
     public ResponseEntity<?> showAttendance(@PathVariable Long studentId){
         return ResponseEntity.ok(attendanceService.showAttendanceByStudent(studentId));
 
@@ -40,7 +42,9 @@ public class AttendanceController {
     }
 
 
+
     @GetMapping("/admins/{subjectName}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> showAttendance(@PathVariable String subjectName){
         List<AttendanceList> list = attendanceService.showAttendance(subjectName);
         if(list!=null){
@@ -54,6 +58,7 @@ public class AttendanceController {
 
 
     @PatchMapping("/{subjectName}/{studentId}")
+    @PreAuthorize("hasAuthority('STUDENT')")
     public ResponseEntity<?> updateAttendance(@RequestBody UpdateAttendanceDto updateAttendanceDto , @PathVariable String subjectName , @PathVariable Long studentId){
        attendanceService.updateAttendance(updateAttendanceDto.getAttendance(),subjectName,studentId);
        return ResponseEntity.ok("updated successfully");
