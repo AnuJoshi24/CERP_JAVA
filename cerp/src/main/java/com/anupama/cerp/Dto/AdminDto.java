@@ -1,7 +1,10 @@
 package com.anupama.cerp.Dto;
 
+import lombok.Getter;
+
 import java.io.Serializable;
 
+@Getter
 public class AdminDto implements Serializable {
 
     private String email;
@@ -16,16 +19,8 @@ public class AdminDto implements Serializable {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void setPassword(String password) {

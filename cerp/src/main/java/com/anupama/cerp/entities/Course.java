@@ -1,7 +1,9 @@
 package com.anupama.cerp.entities;
 
 import jakarta.persistence.Entity;
+import lombok.Getter;
 
+@Getter
 @Entity
 public class Course extends BaseEntity {
 
@@ -13,10 +15,6 @@ public class Course extends BaseEntity {
 
     public Course(String courseName) {
         this.courseName = courseName;
-    }
-
-    public String getCourseName() {
-        return courseName;
     }
 
     public void setCourseName(String courseName) {

@@ -5,7 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
 
+@Getter
 @Entity
 public class Subject extends BaseEntity {
     @NotBlank(message = "subject name is required")
@@ -26,16 +28,8 @@ public class Subject extends BaseEntity {
         this.course = course;
     }
 
-    public String getSubjectName() {
-        return subjectName;
-    }
-
     public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
-    }
-
-    public Course getCourse() {
-        return course;
     }
 
     public void setCourse(Course course) {

@@ -18,7 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import java.security.KeyStore;
 
 @Configuration
 public class AppSecurityConfig {
@@ -34,12 +33,6 @@ public class AppSecurityConfig {
     @Autowired
     private StudentUserDetailsService studentUserDetailsService;
 
-//    @Bean
-//    public UserDetailsService userDetailsService(){
-//
-//        UserDetails user = User.builder().username("anupama").password(passwordEncoder().encode("abc")).roles("ADMIN").build();
-//        return new InMemoryUserDetailsManager(user);
-//    }
 
 
     @Bean

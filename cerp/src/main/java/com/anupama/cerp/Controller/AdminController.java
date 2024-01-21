@@ -25,7 +25,6 @@ public class AdminController {
     @Autowired
     private JWTHelper jwtHelper;
 
-    //http://localhost:8080/admins/courses
     @PostMapping("/signin")
     public ResponseEntity<?> login(@RequestBody AdminDto adminDto) {
         Admin admin = adminService.authenticateAdmin(adminDto.getEmail(), adminDto.getPassword());

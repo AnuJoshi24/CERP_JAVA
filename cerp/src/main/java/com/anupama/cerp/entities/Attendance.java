@@ -5,8 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Getter;
 import org.hibernate.validator.constraints.Range;
 
+@Getter
 @Entity
 public class Attendance extends BaseEntity {
     @Range(min = 0, max = 100, message = "Attendance percentage should be between 0 to 100")
@@ -33,24 +35,12 @@ public class Attendance extends BaseEntity {
         this.subject = subject;
     }
 
-    public int getAttendance() {
-        return attendance;
-    }
-
     public void setAttendance(int attendance) {
         this.attendance = attendance;
     }
 
-    public Student getStudent() {
-        return student;
-    }
-
     public void setStudent(Student student) {
         this.student = student;
-    }
-
-    public Subject getSubject() {
-        return subject;
     }
 
     public void setSubject(Subject subject) {

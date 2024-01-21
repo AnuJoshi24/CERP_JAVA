@@ -5,10 +5,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
 
 import java.io.Serializable;
 
 // to inherit base class properties
+@Getter
 @MappedSuperclass
 public class BaseEntity implements Serializable {
 
@@ -17,10 +19,6 @@ public class BaseEntity implements Serializable {
     //GenerationType.IDENTITY: This strategy will help us to generate the primary key value by the database itself using the auto-increment column option.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    public long getId() {
-        return id;
-    }
 
     public void setId(long id) {
         this.id = id;

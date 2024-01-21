@@ -2,7 +2,9 @@ package com.anupama.cerp.entities;
 // one student can give only one feedback of each subject
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity
 @Table(name = "feedback")
 public class Feedback extends BaseEntity {
@@ -39,64 +41,32 @@ public class Feedback extends BaseEntity {
         this.suggestion = suggestion;
     }
 
-    public Student getStudent() {
-        return student;
-    }
-
     public void setStudent(Student student) {
         this.student = student;
-    }
-
-    public Subject getSubject() {
-        return subject;
     }
 
     public void setSubject(Subject subject) {
         this.subject = subject;
     }
 
-    public int getKnowledge() {
-        return knowledge;
-    }
-
     public void setKnowledge(int knowledge) {
         this.knowledge = knowledge;
-    }
-
-    public int getCommunication() {
-        return communication;
     }
 
     public void setCommunication(int communication) {
         this.communication = communication;
     }
 
-    public int getPunctuality() {
-        return punctuality;
-    }
-
     public void setPunctuality(int punctuality) {
         this.punctuality = punctuality;
-    }
-
-    public int getTeaching() {
-        return teaching;
     }
 
     public void setTeaching(int teaching) {
         this.teaching = teaching;
     }
 
-    public int getGuidance() {
-        return guidance;
-    }
-
     public void setGuidance(int guidance) {
         this.guidance = guidance;
-    }
-
-    public String getSuggestion() {
-        return suggestion;
     }
 
     public void setSuggestion(String suggestion) {
