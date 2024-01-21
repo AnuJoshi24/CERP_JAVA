@@ -23,22 +23,22 @@ public class FeedbackController {
 
     @PostMapping("/{studentId}/{subjectName}")
     @PreAuthorize("hasAuthority('STUDENT')")
-    public ResponseEntity<?> addFeedback(@PathVariable Long studentId , @PathVariable String subjectName , @RequestBody FeedbackDto feedbackDto){
-        Feedback feedback = feedbackService.addFeedback(feedbackDto,studentId,subjectName);
-        if(feedback!=null){
+    public ResponseEntity<?> addFeedback(@PathVariable Long studentId, @PathVariable String subjectName, @RequestBody FeedbackDto feedbackDto) {
+        Feedback feedback = feedbackService.addFeedback(feedbackDto, studentId, subjectName);
+        if (feedback != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body("feedback");
-        }else{
+        } else {
             return ResponseEntity.status(500).body("feedback is recorded already");
         }
     }
 
     @GetMapping("/{subjectName}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<?> showFeedback(@PathVariable String subjectName){
+    public ResponseEntity<?> showFeedback(@PathVariable String subjectName) {
         List<FeedbackList> list = feedbackService.showFeedback(subjectName);
-        if(list!=null){
+        if (list != null) {
             return ResponseEntity.ok(list);
-        }else{
+        } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid Subject Name , Try Again ! ");
         }
     }

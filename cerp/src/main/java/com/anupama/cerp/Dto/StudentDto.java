@@ -1,6 +1,11 @@
 package com.anupama.cerp.Dto;
 
-public class StudentDto {
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Getter
+public class StudentDto implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
@@ -23,56 +28,28 @@ public class StudentDto {
         this.courseId = courseId;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Long getCourseId() {
-        return courseId;
     }
 
     public void setCourseId(Long courseId) {

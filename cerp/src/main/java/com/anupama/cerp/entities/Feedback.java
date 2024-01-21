@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "feedback")
-public class Feedback extends BaseEntity{
+public class Feedback extends BaseEntity {
 
     @OneToOne(fetch = FetchType.LAZY) // only when needed then it will be loaded
     @JoinColumn(name = "student_id")
@@ -16,8 +16,8 @@ public class Feedback extends BaseEntity{
     @JoinColumn(name = "subject_id")
     private Subject subject;
 
-    private int knowledge ;
-    private int communication ;
+    private int knowledge;
+    private int communication;
     private int punctuality;
     private int teaching;
     private int guidance;

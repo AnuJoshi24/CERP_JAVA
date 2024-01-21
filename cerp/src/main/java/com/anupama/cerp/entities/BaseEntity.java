@@ -6,9 +6,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
+import java.io.Serializable;
+
 // to inherit base class properties
 @MappedSuperclass
-public class BaseEntity {
+public class BaseEntity implements Serializable {
 
     @Id // Specifies the primary key of the entity
     // The @GeneratedValue annotation provides us with different strategies for the generation of primary keys :

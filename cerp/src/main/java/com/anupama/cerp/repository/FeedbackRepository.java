@@ -10,11 +10,12 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface FeedbackRepository extends JpaRepository<Feedback , Long> {
+public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
     // find list of feedback by subject id
     List<Feedback> findBySubjectId(Long subjectId);
+
     // find feedback by student and subject
-    Feedback findByStudentAndSubject(Student student , Subject subject);
+    Feedback findByStudentAndSubject(Student student, Subject subject);
 
     //find by subject name and sort by student id
 

@@ -13,8 +13,8 @@ import java.util.List;
 
 public interface AttendanceRepository extends JpaRepository<Attendance, Long> {
 
- // pass student id and find attendance of that id as per each subject
-   @Query("select new com.anupama.cerp.projection.AttendanceRecord(a.attendance as attendance , s.subjectName as subjectName , st.firstName as firstName , st.lastName as lastName , st.email as email , st.gender as gender , st.address as address , st.course as course) from Attendance a join a.subject s join a.student st where a.student.id =:studentId")
+    // pass student id and find attendance of that id as per each subject
+    @Query("select new com.anupama.cerp.projection.AttendanceRecord(a.attendance as attendance , s.subjectName as subjectName , st.firstName as firstName , st.lastName as lastName , st.email as email , st.gender as gender , st.address as address , st.course as course) from Attendance a join a.subject s join a.student st where a.student.id =:studentId")
     List<AttendanceRecord> findAttendanceByStudent(@Param("studentId") Long studentId);
 
 // pass subject name and get student with attendance sorted by student id
@@ -23,5 +23,5 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Long> {
     List<AttendanceList> findAllBySubjectNameAndSortedById(@Param("subjectName") String subjectName);
 
     //get attendance by student and subject
-    Attendance findAttendanceByStudentAndSubject(Student student , Subject subject);
+    Attendance findAttendanceByStudentAndSubject(Student student, Subject subject);
 }

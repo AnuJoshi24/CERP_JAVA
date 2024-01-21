@@ -7,7 +7,9 @@ import com.anupama.cerp.entities.Subject;
 import java.util.List;
 
 public interface AdminService {
-    Admin authenticateAdmin(String email , String password);
+    Admin authenticateAdmin(String email, String password);
+
     List<Course> getCourseList() throws InterruptedException;
+
     List<Subject> getSubjectList(String courseName);
 }

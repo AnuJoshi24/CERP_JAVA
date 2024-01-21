@@ -17,7 +17,7 @@ public class Schedule extends BaseEntity {
     private String location;
 
     @ManyToOne
-    @JoinColumn(name=  "course_id")
+    @JoinColumn(name = "course_id")
     @JsonIgnore
     private Course course;
 

@@ -1,8 +1,11 @@
 package com.anupama.cerp.projection;
 
+import lombok.Getter;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@Getter
 public class ScheduleProjection implements Serializable {
 
     private long scheduleId;
@@ -23,40 +26,20 @@ public class ScheduleProjection implements Serializable {
         this.subjectName = subjectName;
     }
 
-    public long getScheduleId() {
-        return scheduleId;
-    }
-
     public void setScheduleId(long scheduleId) {
         this.scheduleId = scheduleId;
-    }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
     }
 
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public String getSubjectName() {
-        return subjectName;
     }
 
     public void setSubjectName(String subjectName) {

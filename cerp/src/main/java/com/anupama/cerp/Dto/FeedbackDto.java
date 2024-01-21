@@ -1,11 +1,16 @@
 package com.anupama.cerp.Dto;
 
-public class FeedbackDto {
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Getter
+public class FeedbackDto implements Serializable {
     private int knowledge;
     private int communication;
     private int punctuality;
     private int teaching;
-    private  int guidance;
+    private int guidance;
     private String suggestion;
 
     public FeedbackDto() {
@@ -21,48 +26,24 @@ public class FeedbackDto {
         this.suggestion = suggestion;
     }
 
-    public int getKnowledge() {
-        return knowledge;
-    }
-
     public void setKnowledge(int knowledge) {
         this.knowledge = knowledge;
-    }
-
-    public int getCommunication() {
-        return communication;
     }
 
     public void setCommunication(int communication) {
         this.communication = communication;
     }
 
-    public int getPunctuality() {
-        return punctuality;
-    }
-
     public void setPunctuality(int punctuality) {
         this.punctuality = punctuality;
-    }
-
-    public int getTeaching() {
-        return teaching;
     }
 
     public void setTeaching(int teaching) {
         this.teaching = teaching;
     }
 
-    public int getGuidance() {
-        return guidance;
-    }
-
     public void setGuidance(int guidance) {
         this.guidance = guidance;
-    }
-
-    public String getSuggestion() {
-        return suggestion;
     }
 
     public void setSuggestion(String suggestion) {

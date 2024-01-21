@@ -26,42 +26,40 @@ public class AttendanceController {
 
     @GetMapping("/{studentId}")
     @PreAuthorize("hasAuthority('STUDENT')")
-    public ResponseEntity<?> showAttendance(@PathVariable Long studentId){
+    public ResponseEntity<?> showAttendance(@PathVariable Long studentId) {
         return ResponseEntity.ok(attendanceService.showAttendanceByStudent(studentId));
 
     }
 
     @PostMapping("/{subjectName}")
-    public ResponseEntity<?> addAttendance(@Valid @RequestBody AttendanceRequestDto attendanceRequestDto, @PathVariable String subjectName){
-     Attendance attendance = attendanceService.addAttendance(attendanceRequestDto,subjectName);
-     if(attendance!=null){
-         return ResponseEntity.status(HttpStatus.CREATED).body(attendance);
-     }else{
-         return ResponseEntity.status(500).body("Attendance is already present");
-     }
+    public ResponseEntity<?> addAttendance(@Valid @RequestBody AttendanceRequestDto attendanceRequestDto, @PathVariable String subjectName) {
+        Attendance attendance = attendanceService.addAttendance(attendanceRequestDto, subjectName);
+        if (attendance != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(attendance);
+        } else {
+            return ResponseEntity.status(500).body("Attendance is already present");
+        }
     }
-
 
 
     @GetMapping("/admins/{subjectName}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<?> showAttendance(@PathVariable String subjectName){
+    public ResponseEntity<?> showAttendance(@PathVariable String subjectName) {
         List<AttendanceList> list = attendanceService.showAttendance(subjectName);
-        if(list!=null){
-           return ResponseEntity.ok(list);
-        }else{
-           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid subject name");
+        if (list != null) {
+            return ResponseEntity.ok(list);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid subject name");
         }
 
     }
 
 
-
     @PatchMapping("/{subjectName}/{studentId}")
     @PreAuthorize("hasAuthority('STUDENT')")
-    public ResponseEntity<?> updateAttendance(@RequestBody UpdateAttendanceDto updateAttendanceDto , @PathVariable String subjectName , @PathVariable Long studentId){
-       attendanceService.updateAttendance(updateAttendanceDto.getAttendance(),subjectName,studentId);
-       return ResponseEntity.ok("updated successfully");
+    public ResponseEntity<?> updateAttendance(@RequestBody UpdateAttendanceDto updateAttendanceDto, @PathVariable String subjectName, @PathVariable Long studentId) {
+        attendanceService.updateAttendance(updateAttendanceDto.getAttendance(), subjectName, studentId);
+        return ResponseEntity.ok("updated successfully");
     }
 
 

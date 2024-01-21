@@ -46,9 +46,15 @@ public class JWTHelper {
         return expiration.before(new Date());
     }
 
+    //validate token
+    public Boolean validateToken(String token, UserDetails userDetails) {
+        final String username = getUsernameFromToken(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
     //generate token for user
     public String generateToken(String userName, Map<String, Object> claims) {
-        return doGenerateToken(claims,userName);
+        return doGenerateToken(claims, userName);
     }
 
     //while creating the token -
@@ -62,13 +68,6 @@ public class JWTHelper {
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, secret).compact();
     }
-
-    //validate token
-    public Boolean validateToken(String token, UserDetails userDetails) {
-        final String username = getUsernameFromToken(token);
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
-    }
-
 
 
 }

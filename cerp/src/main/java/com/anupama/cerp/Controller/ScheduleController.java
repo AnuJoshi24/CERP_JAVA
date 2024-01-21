@@ -22,16 +22,15 @@ public class ScheduleController {
 
     @PostMapping("/{courseName}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<?> addSchedule(@Valid @RequestBody ScheduleDto scheduleDto, @PathVariable String courseName){
-        Schedule schedule = scheduleService.addSchedule(scheduleDto , courseName);
+    public ResponseEntity<?> addSchedule(@Valid @RequestBody ScheduleDto scheduleDto, @PathVariable String courseName) {
+        Schedule schedule = scheduleService.addSchedule(scheduleDto, courseName);
         return ResponseEntity.status(HttpStatus.CREATED).body(schedule);
     }
 
 
-
     @GetMapping("/{courseName}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<?> getSchedule(@PathVariable String courseName){
+    public ResponseEntity<?> getSchedule(@PathVariable String courseName) {
         return ResponseEntity.ok(scheduleService.getSchedule(courseName));
 
     }
@@ -39,14 +38,14 @@ public class ScheduleController {
 
     @PutMapping("/{courseName}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<?> editSchedule(@Valid @RequestBody ScheduleDto scheduleDto , @PathVariable String courseName ){
-       scheduleService.editSchedule(scheduleDto , courseName);
-       return ResponseEntity.ok("Schedule edited successfully");
+    public ResponseEntity<?> editSchedule(@Valid @RequestBody ScheduleDto scheduleDto, @PathVariable String courseName) {
+        scheduleService.editSchedule(scheduleDto, courseName);
+        return ResponseEntity.ok("Schedule edited successfully");
     }
 
     @DeleteMapping("/{courseName}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ApiResponse deleteSchedule(@Valid @RequestBody ScheduleDto scheduleDto){
+    public ApiResponse deleteSchedule(@Valid @RequestBody ScheduleDto scheduleDto) {
         return new ApiResponse(scheduleService.deleteSchedule(scheduleDto.getId()));
 
     }

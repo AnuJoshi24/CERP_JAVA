@@ -1,10 +1,14 @@
 package com.anupama.cerp.projection;
 
 import com.anupama.cerp.entities.Student;
+import lombok.Getter;
 
-public class AttendanceList {
-  private Student student;
-  private int attendance;
+import java.io.Serializable;
+
+@Getter
+public class AttendanceList implements Serializable {
+    private Student student;
+    private int attendance;
 
     public AttendanceList() {
         super();
@@ -16,16 +20,8 @@ public class AttendanceList {
         this.attendance = attendance;
     }
 
-    public Student getStudent() {
-        return student;
-    }
-
     public void setStudent(Student student) {
         this.student = student;
-    }
-
-    public int getAttendance() {
-        return attendance;
     }
 
     public void setAttendance(int attendance) {

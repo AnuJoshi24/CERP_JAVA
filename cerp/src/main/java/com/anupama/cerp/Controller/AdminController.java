@@ -27,15 +27,14 @@ public class AdminController {
 
     //http://localhost:8080/admins/courses
     @PostMapping("/signin")
-    public ResponseEntity<?> login(@RequestBody AdminDto adminDto){
-   Admin admin = adminService.authenticateAdmin(adminDto.getEmail(),adminDto.getPassword());
-   if(admin!=null){
-//       return ResponseEntity.ok(admin.getId());
-       String token = jwtHelper.generateToken(admin.getEmail(), Map.of("id", admin.getId()));
-       return ResponseEntity.ok(Map.of("token", token, "id", admin.getId()));
-   }else{
-       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username and password");
-   }
+    public ResponseEntity<?> login(@RequestBody AdminDto adminDto) {
+        Admin admin = adminService.authenticateAdmin(adminDto.getEmail(), adminDto.getPassword());
+        if (admin != null) {
+            String token = jwtHelper.generateToken(admin.getEmail(), Map.of("id", admin.getId()));
+            return ResponseEntity.ok(Map.of("token", token, "id", admin.getId()));
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username and password");
+        }
 
     }
 
@@ -48,11 +47,11 @@ public class AdminController {
 
 
     @GetMapping("/courses/{courseName}")
-    public ResponseEntity<?> getSubjectList(@PathVariable String courseName){
+    public ResponseEntity<?> getSubjectList(@PathVariable String courseName) {
         List<Subject> subjects = adminService.getSubjectList(courseName);
-        if(subjects!=null){
+        if (subjects != null) {
             return ResponseEntity.ok(subjects);
-        }else{
+        } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid course name");
         }
 

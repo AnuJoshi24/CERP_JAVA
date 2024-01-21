@@ -3,7 +3,7 @@ package com.anupama.cerp.entities;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Course extends BaseEntity{
+public class Course extends BaseEntity {
 
     private String courseName;
 

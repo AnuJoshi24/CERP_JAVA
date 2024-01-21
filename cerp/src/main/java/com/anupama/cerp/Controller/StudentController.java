@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -36,8 +37,9 @@ public class StudentController {
     }
 
     // get student details
+    @PreAuthorize("hasAuthority('STUDENT')")
     @GetMapping("/{studentId}")
-    public ResponseEntity<?> getStudentDetails(@PathVariable Long studentId){
+    public ResponseEntity<?> getStudentDetails(@PathVariable Long studentId) {
         return ResponseEntity.ok(studentService.getStudentDetails(studentId));
 
     }

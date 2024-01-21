@@ -1,8 +1,12 @@
 package com.anupama.cerp.projection;
 
 import com.anupama.cerp.entities.Course;
+import lombok.Getter;
 
-public class AttendanceRecord {
+import java.io.Serializable;
+
+@Getter
+public class AttendanceRecord implements Serializable {
 
     private int attendance;
     private String subjectName;
@@ -28,64 +32,32 @@ public class AttendanceRecord {
         this.course = course;
     }
 
-    public int getAttendance() {
-        return attendance;
-    }
-
     public void setAttendance(int attendance) {
         this.attendance = attendance;
-    }
-
-    public String getSubjectName() {
-        return subjectName;
     }
 
     public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getGender() {
-        return gender;
     }
 
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Course getCourse() {
-        return course;
     }
 
     public void setCourse(Course course) {

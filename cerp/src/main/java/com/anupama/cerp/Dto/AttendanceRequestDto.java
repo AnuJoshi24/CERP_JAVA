@@ -1,6 +1,11 @@
 package com.anupama.cerp.Dto;
 
-public class AttendanceRequestDto {
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Getter
+public class AttendanceRequestDto implements Serializable {
 
     private long studentId;
     private int attendance;
@@ -15,16 +20,8 @@ public class AttendanceRequestDto {
         this.attendance = attendance;
     }
 
-    public long getStudentId() {
-        return studentId;
-    }
-
     public void setStudentId(long studentId) {
         this.studentId = studentId;
-    }
-
-    public int getAttendance() {
-        return attendance;
     }
 
     public void setAttendance(int attendance) {

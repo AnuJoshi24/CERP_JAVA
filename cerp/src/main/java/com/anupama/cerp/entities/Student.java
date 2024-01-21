@@ -10,44 +10,46 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+import java.io.Serializable;
+
 @Entity
-public class Student extends BaseEntity{
+public class Student extends BaseEntity implements Serializable {
 
     @Column(length = 20)
     @NotBlank(message = "First Name is required")
-    @Size(min = 2 , max = 20 , message = "First Name must be between 2 and 20 char")
+    @Size(min = 2, max = 20, message = "First Name must be between 2 and 20 char")
     private String firstName;
     @Column(length = 20)
     private String lastName;
-    @Column(length = 30 , unique = true)
+    @Column(length = 30, unique = true)
     @NotBlank(message = "email is required")
     @Email(message = "Invalid email address")
     private String email;
     @NotBlank(message = "Gender should not be blank")
     private String gender;
-    @Column(length = 20 , nullable = false)
+    @Column(length = 20, nullable = false)
     @NotBlank(message = "Password is required")
-    @Size(min = 6 , message = "password must have at least 6 characters")
+    @Size(min = 6, message = "password must have at least 6 characters")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @Pattern(regexp="((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{6,20})",message = "Invalid Password!")
+    @Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{6,20})", message = "Invalid Password!")
     private String password;
     @Column(length = 50)
     private String address;
 
 
     @ManyToOne
-    @JoinColumn(name="course_id")
+    @JoinColumn(name = "course_id")
     private Course course;
 
     public Student() {
         super();
     }
 
-    public Student(@NotBlank(message = "First name is required") @Size(min = 2 , max = 20 , message = "first name must be between 2 to 20 chars") String firstName,
+    public Student(@NotBlank(message = "First name is required") @Size(min = 2, max = 20, message = "first name must be between 2 to 20 chars") String firstName,
                    String lastName,
                    @NotBlank(message = "Email is required") @Email(message = "Invalid Email Address") String email,
                    @NotBlank(message = "Gender should not be blank") String gender,
-                   @NotBlank(message = "password is required") @Size(min = 6 , message = "password should have atl east 6 char") @Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{6,20})", message = "Invalid Password!") String password,
+                   @NotBlank(message = "password is required") @Size(min = 6, message = "password should have atl east 6 char") @Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{6,20})", message = "Invalid Password!") String password,
                    String address, Course course) {
         super();
         this.firstName = firstName;

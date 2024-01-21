@@ -8,8 +8,8 @@ import jakarta.persistence.ManyToOne;
 import org.hibernate.validator.constraints.Range;
 
 @Entity
-public class Attendance extends BaseEntity{
-    @Range(min = 0 , max = 100 , message = "Attendance percentage should be between 0 to 100")
+public class Attendance extends BaseEntity {
+    @Range(min = 0, max = 100, message = "Attendance percentage should be between 0 to 100")
     private int attendance;
 
     @ManyToOne
@@ -26,7 +26,7 @@ public class Attendance extends BaseEntity{
         super();
     }
 
-    public Attendance(@Range(min = 0 , max = 100 , message = "Attendance percentage should be between 0 to 100") int attendance,
+    public Attendance(@Range(min = 0, max = 100, message = "Attendance percentage should be between 0 to 100") int attendance,
                       Student student, Subject subject) {
         this.attendance = attendance;
         this.student = student;

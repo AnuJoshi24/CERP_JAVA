@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,10 +19,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-
+import java.util.Map;
 
 @Component
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
+
 
     private static final Logger logger = LoggerFactory.getLogger(OncePerRequestFilter.class);
 
@@ -30,23 +32,16 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private ApplicationContext context;
 
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
-
-//        try {
-//            Thread.sleep(500);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
         //Authorization
 
         String requestHeader = request.getHeader("Authorization");
         //Bearer 2352345235sdfrsfgsdfsdf
-        logger.info(" Header :  {}", requestHeader);
+        logger.info(String.format("Header value %s", requestHeader));
         String username = null;
         String token = null;
         if (requestHeader != null && requestHeader.startsWith("Bearer")) {
@@ -78,21 +73,19 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
         //
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails userDetails = null;
+            Map<String, UserDetailsService> usDetailsServiceMap = context.getBeansOfType(UserDetailsService.class);
+            for (Map.Entry<String, UserDetailsService> map : usDetailsServiceMap.entrySet()) {
+                userDetails = map.getValue().loadUserByUsername(username);
+                if (userDetails != null) {
+                    break;
+                }
+            }
 
-
-            //fetch user detail from username
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-            Boolean validateToken = this.jwtHelper.validateToken(token, userDetails);
-            if (validateToken) {
-
-                //set the authentication
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-
-
-            } else {
-                logger.info("Validation fails !!");
+            if (jwtHelper.validateToken(token, userDetails)) {
+                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(authToken);
             }
 
 

@@ -1,8 +1,12 @@
 package com.anupama.cerp.Dto;
 
+import lombok.Getter;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class ScheduleDto {
+@Getter
+public class ScheduleDto implements Serializable {
     private Long id;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -21,40 +25,20 @@ public class ScheduleDto {
         this.subjectName = subjectName;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
     }
 
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public String getSubjectName() {
-        return subjectName;
     }
 
     public void setSubjectName(String subjectName) {

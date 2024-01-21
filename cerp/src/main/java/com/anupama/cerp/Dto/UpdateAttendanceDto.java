@@ -1,6 +1,11 @@
 package com.anupama.cerp.Dto;
 
-public class UpdateAttendanceDto {
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Getter
+public class UpdateAttendanceDto implements Serializable {
     private int attendance;
 
     public UpdateAttendanceDto() {
@@ -10,10 +15,6 @@ public class UpdateAttendanceDto {
     public UpdateAttendanceDto(int attendance) {
         super();
         this.attendance = attendance;
-    }
-
-    public int getAttendance() {
-        return attendance;
     }
 
     public void setAttendance(int attendance) {
