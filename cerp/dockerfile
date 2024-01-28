@@ -1,0 +1,4 @@
+FROM openjdk:17
+WORKDIR /Users/anupama.joshi/src/boot-app
+COPY . /Users/anupama.joshi/src/boot-app/
+CMD [ "java" , "-jar" , "cerp-0.0.1-SNAPSHOT.jar" ]

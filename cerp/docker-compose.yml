@@ -1,0 +1,41 @@
+version : '3'
+services:
+  dbservices:
+   image: mysql
+   environment:
+    - MYSQL_ROOT_PASSWORD=root
+   volumes:
+    - ./data/mysql:/var/lib/mysql
+
+   ports:
+    - 3307:3306  
+   networks:
+    - bootapp
+
+  appservices:
+   build: ./spring-boot-application
+   depends_on: 
+    - dbservices
+    - redisservices
+   environment:
+    - MYSQL_HOST=dbservices
+    - MYSQL_PORT=3306
+    - MYSQL_PASSWORD=root
+    - REDIS_HOST=redisservices
+    - REDIS_PORT=6379
+
+   ports:
+    - 8085:8086  
+   networks:
+    - bootapp
+
+  redisservices:
+   image: redis:7.2.4
+   ports:
+    - 6370:6379
+   networks:
+    - bootapp 
+
+
+networks:
+  bootapp:

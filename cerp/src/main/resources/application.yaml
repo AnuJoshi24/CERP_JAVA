@@ -29,8 +29,8 @@ spring:
 #      time-to-live: 60000
 #      template.defaultSerializer: org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer
   redis :
-    host : localhost
-    port : 6379
+    host : ${REDIS_HOST:localhost}
+    port : ${REDIS_PORT:6379}
     timeout : 10000
     cache :
       type : REDIS
